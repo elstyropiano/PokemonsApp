@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import Home from './pages/Home'
+import Favourite from './pages/Favourite'
+import Details from './pages/Details'
+import styled from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
+import Arena from './pages/Arena'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const S = {
+  Wrapper: styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  `,
 }
+const App = () => (
+  <BrowserRouter>
+    <S.Wrapper>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='ulubione' element={<Favourite />} />
+        <Route path='arena' element={<Arena />} />
+        <Route path='pokemon/:id' element={<Details />} />
+        <Route path='*' element={<div>not found</div>} />
+        <Route path='/login' element={<div>not found</div>} />
+      </Routes>
+    </S.Wrapper>
+  </BrowserRouter>
+)
 
-export default App;
+export default App

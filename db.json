@@ -1,0 +1,19 @@
+{
+  "stats": [
+    {
+      "name": "venusaur",
+      "experience": 283,
+      "id": 1
+    },
+    {
+      "name": "charmander",
+      "experience": 72,
+      "id": 2
+    },
+    {
+      "name": "ivysaur",
+      "experience": 152,
+      "id": 3
+    }
+  ]
+}
