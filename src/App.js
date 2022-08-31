@@ -5,7 +5,7 @@ import Favourite from './pages/Favourite'
 import Details from './pages/Details'
 import styled from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
-import Arena from './pages/Arena'
+import Arena from './pages/arena/Arena'
 
 const S = {
   Wrapper: styled.div`
@@ -15,20 +15,23 @@ const S = {
     height: 100vh;
   `,
 }
-const App = () => (
-  <BrowserRouter>
-    <S.Wrapper>
-      <NavBar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='ulubione' element={<Favourite />} />
-        <Route path='arena' element={<Arena />} />
-        <Route path='pokemon/:id' element={<Details />} />
-        <Route path='*' element={<div>not found</div>} />
-        <Route path='/login' element={<div>not found</div>} />
-      </Routes>
-    </S.Wrapper>
-  </BrowserRouter>
-)
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <S.Wrapper>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="ulubione" element={<Favourite />} />
+          <Route path="arena" element={<Arena />} />
+          <Route path="pokemon/:id" element={<Details />} />
+          <Route path="*" element={<div>not found</div>} />
+          <Route path="/login" element={<div>not found</div>} />
+        </Routes>
+      </S.Wrapper>
+    </BrowserRouter>
+  )
+}
 
 export default App

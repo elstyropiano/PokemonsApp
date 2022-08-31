@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Context from '../Context'
-import { useState } from 'react'
+import FightStats from './FightStats'
 const S = {
   DescripionWrapper: styled.div`
     display: flex;
@@ -50,10 +50,21 @@ const S = {
     margin: 0;
     font-size: ${({ details }) => (details ? '40px' : '30px')};
   `,
+
+  StatisticWrapper: styled.div`
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin-top: 7px;
+  `,
 }
 const Description = ({ data, details }) => {
-  const { stats } = useContext(Context)
+  const { statsFromDb } = useContext(Context)
+  const [isInstatsFromDb, setIsInstatsFromDb] = useState(false)
+  const [totallyWins, setTotallyWins] = useState(null)
+  const [totallyLoses, setTotallyLoses] = useState(null)
   const [exp, setExp] = useState(null)
+
   const firstLetterUppercase = () => {
     const newName = `${data?.name
       ?.substring(0, 1)
@@ -61,32 +72,30 @@ const Description = ({ data, details }) => {
     return newName
   }
   useEffect(() => {
-    const isThere = stats?.some(
-      ({ name, experience }, index) => name === data.name
-    )
-    console.log(isThere)
-    if (isThere) {
-      stats?.map(({ name, experience }) => {
-        if (name === data?.name) setExp(experience)
-      })
-      return
-    }
-    setExp(data.base_experience)
+    setExp(data?.base_experience)
+    if (statsFromDb) {
+      const isThere = statsFromDb?.some(({ name }) => name === data?.name)
+      setIsInstatsFromDb(isThere)
 
-    // setRightExp()
-  }, [])
+      isThere
+        ? statsFromDb?.map(({ name, experience, wins, loses }) => {
+            if (name === data?.name) {
+              setExp(experience)
+              setTotallyWins(wins)
+              setTotallyLoses(loses)
+            }
+          })
+        : setExp(data?.base_experience)
+    }
+  }, [statsFromDb])
 
   return (
     <S.DescripionWrapper>
+      {isInstatsFromDb && (
+        <FightStats totallyWins={totallyWins} totallyLoses={totallyLoses} />
+      )}
       <S.H1 details={details}>{firstLetterUppercase()}</S.H1>
-      <div
-        style={{
-          display: 'flex',
-          flex: '1',
-          width: '100%',
-          marginTop: '7px',
-        }}
-      >
+      <S.StatisticWrapper>
         <S.DoubleDecripionWrapper>
           <S.Span>
             {data?.height}
@@ -107,27 +116,9 @@ const Description = ({ data, details }) => {
             <S.SpanPropsName>Ability</S.SpanPropsName>
           </S.Span>
         </S.DoubleDecripionWrapper>
-      </div>
+      </S.StatisticWrapper>
     </S.DescripionWrapper>
   )
 }
 
 export default Description
-
-// // useEffect(() => {
-
-// if (stats?.length === 0) {
-//   setRightExp(data.base_experience)
-//   return
-// }
-// console.log('wykona sie tu')
-// stats?.forEach(({ name, experience }) => {
-//   const newExperience =
-//     name === data?.name ? experience : data?.base_experience
-//   if (data.name === 'charmeleon') {
-//     console.log(newExperience, 'charmeleon')
-//   }
-//   setRightExp(newExperience)
-// })
-
-// // }, [])

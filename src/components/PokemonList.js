@@ -1,15 +1,11 @@
 import styled from 'styled-components'
-import useFetch from '../hooks/useFetch'
-import SimplePokemonCard from './SimplePokemonCard'
+import SimplePokemonCard from './simplePokemonCard/SimplePokemonCard'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import Context from '../Context'
-const baseURL = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=15'
 
 const PokemonList = () => {
-  const { setLink, setPokemonsArr, filteredArr } = useContext(Context)
-  const { data } = useFetch(baseURL)
-  setPokemonsArr(data?.results)
+  const { setLink, filteredArr } = useContext(Context)
 
   const S = {
     Wrapper: styled.div`

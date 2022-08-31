@@ -2,9 +2,10 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Context from '../Context'
 import styled from 'styled-components'
-import SimplePokemonCard from '../components/SimplePokemonCard'
+import SimplePokemonCard from '../components/simplePokemonCard/SimplePokemonCard'
 import emptyPokeball from '../images/emptyPokeball.png'
 import BackHomeButton from '../components/BackHomeButton'
+import useFetch from '../hooks/useFetch'
 const S = {
   Wrapper: styled.div`
     display: flex;
@@ -17,29 +18,29 @@ const S = {
     margin-top: 100px;
   `,
 }
+const url = 'http://localhost:3000/favourite'
 const Favourite = () => {
-  const { favourite, setLink } = useContext(Context)
+  const { setLink, statsFromDb } = useContext(Context)
+  const { data, error, loading } = useFetch(url)
 
   return (
-    <S.Wrapper empty={favourite.length === 0}>
-      {favourite.length === 0 ? (
-        <>
-          <S.Img src={emptyPokeball} alt='empty_pokeball' />
-          <h1>POKEBALL JEST PUSTY</h1>
-        </>
-      ) : (
-        favourite?.map(({ name, url }) => (
-          <Link
-            key={name}
-            onClick={setLink(url)}
-            to={`/pokemon/${name}`}
-          >
-            <SimplePokemonCard list key={name} url={url} />
-          </Link>
-        ))
-      )}
-      <BackHomeButton />
-    </S.Wrapper>
+    data && (
+      <S.Wrapper empty={data?.length === 0}>
+        {data?.length === 0 ? (
+          <>
+            <S.Img src={emptyPokeball} alt="empty_pokeball" />
+            <h1>POKEBALL JEST PUSTY</h1>
+          </>
+        ) : (
+          data?.map(({ name, url }) => (
+            <Link key={name} onClick={setLink(url)} to={`/pokemon/${name}`}>
+              <SimplePokemonCard list key={name} url={url} />
+            </Link>
+          ))
+        )}
+        <BackHomeButton />
+      </S.Wrapper>
+    )
   )
 }
 
