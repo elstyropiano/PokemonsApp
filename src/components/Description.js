@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useContext, useEffect, useState } from 'react'
 import Context from '../Context'
-import FightStats from './FightStats'
+
 const S = {
   DescripionWrapper: styled.div`
     display: flex;
@@ -91,9 +91,6 @@ const Description = ({ data, details }) => {
 
   return (
     <S.DescripionWrapper>
-      {isInstatsFromDb && (
-        <FightStats totallyWins={totallyWins} totallyLoses={totallyLoses} />
-      )}
       <S.H1 details={details}>{firstLetterUppercase()}</S.H1>
       <S.StatisticWrapper>
         <S.DoubleDecripionWrapper>

@@ -67,25 +67,26 @@ const PokemonDetails = ({ url }) => {
   const { id } = useParams()
   const { data, error, loading } = useFetch(url)
   const [fullArena, setFullArena] = useState(false)
-  const { arenaMember, setArenaMember, statsFromDb } = useContext(Context)
+  const { statsFromDb } = useContext(Context)
   const [checkIsInFav, setCheckIsInFav] = useState(null)
   const [checkIsInArena, setCheckIsInArena] = useState(null)
+  // const [arenaMember, setArenaMember] = useState(null)
   const [favourite, setFavourite] = useState(null)
   const [index, setIndex] = useState(null)
   const [experience, setExperience] = useState(null)
   const [stats, setStats] = useState(null)
-
+  const { arenaMember, setArenaMember } = useContext(Context)
   useEffect(() => {
     ;(async () => {
       const response = await fetch('http://localhost:3000/favourite')
       const rowData = await response.json()
       setFavourite(rowData)
     })()
-    ;(async () => {
-      const response = await fetch('http://localhost:3000/arena')
-      const rowData = await response.json()
-      setArenaMember(rowData)
-    })()
+    // ;(async () => {
+    //   const response = await fetch('http://localhost:3000/arena')
+    //   const rowData = await response.json()
+    //   setArenaMember(rowData)
+    // })()
   }, [])
 
   useEffect(() => {
@@ -218,8 +219,8 @@ const PokemonDetails = ({ url }) => {
           inarena={checkIsInArena}
         />
 
-        <S.ArenaMember warning={arenaMember.length === 2}>
-          {`${arenaMember.length}/2`}
+        <S.ArenaMember warning={arenaMember?.length === 2}>
+          {`${arenaMember?.length}/2`}
         </S.ArenaMember>
         {fullArena && <S.FullArenaInfo>Arena jest pełna</S.FullArenaInfo>}
       </S.Wrapper>

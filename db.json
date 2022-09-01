@@ -1,48 +1,41 @@
 {
   "stats": [
     {
-      "name": "venusaur",
-      "experience": 268,
+      "name": "charizard",
+      "experience": 277,
       "wins": 1,
       "loses": 0,
       "id": 1
     },
     {
-      "name": "squirtle",
-      "experience": 68,
-      "wins": 1,
-      "loses": 0,
-      "id": 2
-    },
-    {
-      "name": "wartortle",
-      "experience": 147,
+      "name": "bulbasaur",
+      "experience": 74,
       "wins": 1,
       "loses": 0,
       "id": 3
-    }
-  ],
-  "favourite": [
-    {
-      "name": "kabuto",
-      "url": "https://pokeapi.co/api/v2/pokemon/140/",
-      "id": 1
-    },
-    {
-      "name": "charmeleon",
-      "url": "https://pokeapi.co/api/v2/pokemon/5/",
-      "id": 5
     },
     {
       "name": "venusaur",
-      "url": "https://pokeapi.co/api/v2/pokemon/3/",
-      "id": 6
+      "experience": 298,
+      "wins": 4,
+      "loses": 0,
+      "id": 4
+    },
+    {
+      "name": "ivysaur",
+      "experience": 152,
+      "wins": 1,
+      "loses": 0,
+      "id": 5
     },
     {
       "name": "charmander",
-      "url": "https://pokeapi.co/api/v2/pokemon/4/",
-      "id": 7
+      "experience": 67,
+      "wins": 1,
+      "loses": 0,
+      "id": 6
     }
   ],
+  "favourite": [],
   "arena": []
 }

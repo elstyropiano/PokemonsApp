@@ -15,7 +15,7 @@ const PokemonList = () => {
       justify-content: center;
     `,
   }
-
+  // console.log(filteredArr, 'filtered arr w list')
   return (
     <S.Wrapper>
       {filteredArr?.map(({ name, url }) => {

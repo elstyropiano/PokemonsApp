@@ -4,14 +4,39 @@ import Description from '../Description'
 import { useContext, useEffect, useState } from 'react'
 import { S } from './SimplePokemonCard.style'
 import CircularProgress from '@mui/material/CircularProgress'
-
+import FightStats from '../FightStats'
 const SimplePokemonCard = ({ url, arena, list }) => {
-  const { arenaMember, setArenaMember } = useContext(Context)
+  const { arenaMember, setArenaMember, statsFromDb } = useContext(Context)
   const [isInArray, setIsInArray] = useState(null)
   const [id, setId] = useState(null)
-
+  const [totallyWins, setTotallyWins] = useState(null)
+  const [totallyLoses, setTotallyLoses] = useState(null)
+  const [IsInStatsFromDb, setIsInStatsFromDb] = useState(null)
   const { data, error, loading } = useFetch(url)
+  console.log(statsFromDb, 'statsFromDB')
 
+  useEffect(() => {
+    if (statsFromDb) {
+      const isThere = statsFromDb?.some(({ name }) => name === data?.name)
+      setIsInStatsFromDb(isThere)
+
+      if (isThere)
+        statsFromDb?.map(({ name, wins, loses }) => {
+          if (name === data?.name) {
+            setTotallyWins(wins)
+            setTotallyLoses(loses)
+          }
+        })
+    }
+  }, [data])
+
+  // useEffect(() => {
+  //   ;(async () => {
+  //     const response = await fetch('http://localhost:3000/arena')
+  //     const rowData = await response.json()
+  //     setArenaMember(rowData)
+  //   })()
+  // }, [])
   // useEffect(() => {
   //   ;(async () => {
   //     const response = await fetch('http://localhost:3000/arena')
@@ -27,7 +52,7 @@ const SimplePokemonCard = ({ url, arena, list }) => {
   //   }
   // }, [arenaMember])
   const checkId = () => {
-    arenaMember.map(({ name }, index) => {
+    arenaMember?.map(({ name }, index) => {
       if (name === data?.name) {
         setId(arenaMember[index].id)
       }
@@ -64,6 +89,7 @@ const SimplePokemonCard = ({ url, arena, list }) => {
   //   })()
   // }
 
+  console.log(IsInStatsFromDb, 'IsInStatsFromDb')
   if (error) {
     return (
       <S.MainWrapper list={list} arena={arena}>
@@ -83,6 +109,9 @@ const SimplePokemonCard = ({ url, arena, list }) => {
     return (
       <S.MainWrapper list={list} arena={arena}>
         <>
+          {IsInStatsFromDb && (
+            <FightStats totallyWins={totallyWins} totallyLoses={totallyLoses} />
+          )}
           {arena && (
             <S.ClearIcon fontSize="large" color="info" onClick={checkId} />
           )}
