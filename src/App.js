@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
-import NavBar from './components/NavBar'
-import Home from './pages/Home'
-import Favourite from './pages/Favourite'
-import Details from './pages/Details'
+import NavBar from './components/NavBar/NavBar'
+import Home from './pages/Home/Home'
+import FavouritesPokemons from './pages/FavouritesPokemons/FavouritesPokemons'
+import Details from './pages/Details/Details'
 import styled from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
-import Arena from './pages/arena/Arena'
+import Arena from './pages/Arena/Arena'
 
 const S = {
   Wrapper: styled.div`
@@ -23,7 +23,7 @@ const App = () => {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="ulubione" element={<Favourite />} />
+          <Route path="ulubione" element={<FavouritesPokemons />} />
           <Route path="arena" element={<Arena />} />
           <Route path="pokemon/:id" element={<Details />} />
           <Route path="*" element={<div>not found</div>} />

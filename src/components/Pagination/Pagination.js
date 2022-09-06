@@ -1,16 +1,16 @@
 import Pagination from '@mui/material/Pagination'
 import { useContext } from 'react'
-import Context from '../Context'
+import Context from '../../Context'
 const BasicPagination = () => {
   const { setPage, page } = useContext(Context)
   const handlePagination = (e, value) => setPage(value)
-
+  console.log(page, 'page')
   return (
     <Pagination
       count={10}
-      color='primary'
+      color="primary"
       onChange={handlePagination}
-      size='large'
+      size="large"
       page={page}
       sx={{ borderRadius: '10px' }}
     />

@@ -1,19 +1,9 @@
 import TextField from '@mui/material/TextField'
-import styled from 'styled-components'
-import PokemonList from '../components/PokemonList'
-import Context from '../Context'
-import { useState, useContext, useEffect } from 'react'
-import Pagination from '../components/Pagination'
-
-const S = {
-  Wrapper: styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  `,
-}
-
+import PokemonList from '../../components/PokemonList/PokemonList'
+import Context from '../../Context'
+import { useState, useContext } from 'react'
+import Pagination from '../../components/Pagination/Pagination'
+import { S } from '../../pages/Home/Home.styled'
 const login = {
   userName: 'Grzegorz',
   password: '1asdar',
@@ -25,19 +15,19 @@ const local = JSON.parse(window.localStorage.getItem('user1'))
 // const user = JSON.parse(window.localStorage.getItem('user1'))
 
 const Home = () => {
-  const { pokemonsArr, setFilteredArr } = useContext(Context)
+  const { pokemonsArrayFromApi, setFilteredPokemons } = useContext(Context)
   const [value, setValue] = useState([])
   const [warning, setWarning] = useState(false)
 
   const handleInput = e => {
     const inputValue = e.target.value
     setValue(inputValue)
-    const filteredPokemonsArr = pokemonsArr?.filter(({ name }) =>
+    const filteredPokemonsArr = pokemonsArrayFromApi?.filter(({ name }) =>
       name.includes(inputValue)
     )
     const noPokemonsWarning = filteredPokemonsArr.length === 0 ? true : false
     setWarning(noPokemonsWarning)
-    setFilteredArr(filteredPokemonsArr)
+    setFilteredPokemons(filteredPokemonsArr)
   }
 
   return (

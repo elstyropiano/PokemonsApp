@@ -1,41 +1,52 @@
 {
   "stats": [
     {
-      "name": "charizard",
-      "experience": 277,
-      "wins": 1,
+      "name": "venusaur",
+      "experience": 293,
+      "wins": 3,
       "loses": 0,
       "id": 1
     },
     {
-      "name": "bulbasaur",
-      "experience": 74,
+      "name": "ivysaur",
+      "experience": 142,
+      "wins": 0,
+      "loses": 1,
+      "id": 2
+    },
+    {
+      "name": "charmander",
+      "experience": 72,
       "wins": 1,
       "loses": 0,
       "id": 3
     },
     {
-      "name": "venusaur",
-      "experience": 298,
-      "wins": 4,
-      "loses": 0,
+      "name": "bulbasaur",
+      "experience": 64,
+      "wins": 0,
+      "loses": 1,
       "id": 4
     },
     {
-      "name": "ivysaur",
-      "experience": 152,
-      "wins": 1,
-      "loses": 0,
+      "name": "charmeleon",
+      "experience": 142,
+      "wins": 0,
+      "loses": 1,
       "id": 5
-    },
-    {
-      "name": "charmander",
-      "experience": 67,
-      "wins": 1,
-      "loses": 0,
-      "id": 6
     }
   ],
-  "favourite": [],
-  "arena": []
+  "favouritesPokemons": [
+    {
+      "name": "ivysaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/2/",
+      "id": 1
+    },
+    {
+      "name": "charizard",
+      "url": "https://pokeapi.co/api/v2/pokemon/6/",
+      "id": 2
+    }
+  ],
+  "arenaMembers": []
 }
