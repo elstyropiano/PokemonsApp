@@ -1,41 +1,93 @@
 {
+  "users": [
+    {
+      "name": "grzegorz",
+      "email": "grzegorz@email.com",
+      "password": "(9nKasdasdasd",
+      "id": 1
+    },
+    {
+      "name": "asdasdasd",
+      "email": "asdasca@o2.pl",
+      "password": "(9nKasdasdasd",
+      "id": 2
+    }
+  ],
   "stats": [
     {
-      "name": "charizard",
-      "experience": 277,
-      "wins": 1,
+      "name": "ivysaur",
+      "experience": 182,
+      "wins": 4,
       "loses": 0,
       "id": 1
     },
     {
       "name": "bulbasaur",
-      "experience": 74,
+      "experience": 64,
+      "wins": 0,
+      "loses": 4,
+      "id": 2
+    },
+    {
+      "name": "venusaur",
+      "experience": 273,
       "wins": 1,
       "loses": 0,
       "id": 3
     },
     {
-      "name": "venusaur",
-      "experience": 298,
-      "wins": 4,
-      "loses": 0,
+      "name": "charmander",
+      "experience": 62,
+      "wins": 0,
+      "loses": 2,
       "id": 4
     },
     {
-      "name": "ivysaur",
-      "experience": 152,
+      "name": "charizard",
+      "experience": 277,
       "wins": 1,
       "loses": 0,
       "id": 5
-    },
-    {
-      "name": "charmander",
-      "experience": 67,
-      "wins": 1,
-      "loses": 0,
-      "id": 6
     }
   ],
-  "favourite": [],
-  "arena": []
+  "favouritesPokemons": [
+    {
+      "name": "venusaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/3/",
+      "id": 1
+    },
+    {
+      "name": "ivysaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/2/",
+      "id": 2
+    },
+    {
+      "name": "charmeleon",
+      "url": "https://pokeapi.co/api/v2/pokemon/5/",
+      "id": 3
+    },
+    {
+      "name": "bulbasaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/1/",
+      "id": 4
+    },
+    {
+      "name": "koffing",
+      "url": "https://pokeapi.co/api/v2/pokemon/109/",
+      "id": 5
+    }
+  ],
+  "arenaMembers": [
+    {
+      "name": "bulbasaur",
+      "experience": 64,
+      "height": 7,
+      "weight": 69,
+      "speed": 45,
+      "wins": 0,
+      "loses": 0,
+      "url": "https://pokeapi.co/api/v2/pokemon/1/",
+      "id": 1
+    }
+  ]
 }
