@@ -6,7 +6,6 @@ const Description = ({ data, details }) => {
   const { statsFromJsonServer } = useContext(Context)
   const [experience, setExperience] = useState(null)
   const [name, setName] = useState(null)
-
   const checkPokemonIsInArr = array =>
     array?.some(({ name }) => name === data.name)
 

@@ -1,18 +1,9 @@
 import TextField from '@mui/material/TextField'
-import PokemonList from '../../components/PokemonList/PokemonList'
+import PokemonList from '../../components/pokemonList/PokemonList'
 import Context from '../../Context'
 import { useState, useContext } from 'react'
-import Pagination from '../../components/Pagination/Pagination'
-import { S } from '../../pages/Home/Home.styled'
-const login = {
-  userName: 'Grzegorz',
-  password: '1asdar',
-}
-// window.localStorage.setItem(`user${1}`, JSON.stringify(login))
-console.log(localStorage)
-const local = JSON.parse(window.localStorage.getItem('user1'))
-// window.localStorage.clear()
-// const user = JSON.parse(window.localStorage.getItem('user1'))
+import Pagination from '../../components/pagination/Pagination'
+import { S } from './Home.styled'
 
 const Home = () => {
   const { pokemonsArrayFromApi, setFilteredPokemons } = useContext(Context)

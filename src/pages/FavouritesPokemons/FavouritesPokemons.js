@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Context from '../../Context'
 import { S } from './FavouritesPokemons.styled'
-import SimplePokemonCard from '../../components/SimplePokemonCard/SimplePokemonCard'
+import SimplePokemonCard from '../../components/simplePokemonCard/SimplePokemonCard'
 import emptyPokeball from '../../images/emptyPokeball.png'
-import BackHomeButton from '../../components/BackHomeButton/BackHomeButton'
+import BackHomeButton from '../../components/backHomeButton/BackHomeButton'
 
 const FavouritesPokemons = () => {
   const { setLink, favouritesPokemons } = useContext(Context)
@@ -18,7 +18,7 @@ const FavouritesPokemons = () => {
         </>
       ) : (
         favouritesPokemons?.map(({ name, url }) => (
-          <Link key={name} onClick={setLink(url)} to={`/pokemon/${name}`}>
+          <Link key={name} onClick={() => setLink(url)} to={`/pokemon/${name}`}>
             <SimplePokemonCard list key={name} url={url} />
           </Link>
         ))

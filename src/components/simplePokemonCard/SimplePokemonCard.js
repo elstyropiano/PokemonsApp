@@ -1,10 +1,10 @@
 import useFetch from '../../hooks/useFetch'
 import Context from '../../Context'
-import Description from '../Description/Description'
+import Description from '../description/Description'
 import { useContext, useEffect, useState } from 'react'
 import { S } from './SimplePokemonCard.styled'
 import CircularProgress from '@mui/material/CircularProgress'
-import FightStats from '../FightStats/FightStats'
+import FightStats from '../fightStats/FightStats'
 import axios from 'axios'
 
 const SimplePokemonCard = ({ url, arena, list }) => {

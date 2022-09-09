@@ -1,10 +1,10 @@
 import { createContext, useEffect, useState } from 'react'
 import axios from 'axios'
-import { ConstructionOutlined } from '@mui/icons-material'
 
 const Context = createContext()
 
 export function ContextProvider({ children }) {
+  const [loggedUser, setLoggedUser] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [clickedPokemonData, setClickedPokemonData] = useState(null)
@@ -17,27 +17,36 @@ export function ContextProvider({ children }) {
   const [pokemonsArrayFromApi, setPokemonsArrayFromApi] = useState(null)
   const [filteredPokemons, setFilteredPokemons] = useState(null)
   const [favouritesPokemons, setFavouritesPokemons] = useState(null)
+  const [usersList, setUsersList] = useState(null)
   const showDeleteSuccesOnConsole = () => console.log('Delete succes')
   const showErrorMessageOnConsole = error => console.log('Error:', error)
 
   useEffect(() => {
-    // getArenaMembers()
-    // getStatsFromJsonServer()
+    const loggedUser = JSON.parse(localStorage.getItem('logged'))
+    setLoggedUser(loggedUser)
     ;(async () =>
       await axios
-        .get('http://localhost:3000/arenaMembers')
-        .then(response => setArenaMembers(response.data))
-        .catch(error => console.error('There was error : ', error)))()
-    ;(async () =>
-      await axios
-        .get('http://localhost:3000/stats')
+        .get(`http://localhost:3000/stats`)
         .then(response => setStatsFromJsonServer(response.data))
         .catch(error => console.error('There was error : ', error)))()
     ;(async () =>
       await axios
-        .get('http://localhost:3000/favouritesPokemons')
+        .get(`http://localhost:3000/arenaMembers`)
+        .then(response => setArenaMembers(response.data))
+        .catch(error => console.error('There was error : ', error)))()
+    ;(async () =>
+      await axios
+        .get(`http://localhost:3000/favouritesPokemons`)
         .then(response => setFavouritesPokemons(response.data))
         .catch(error => console.error('There was error : ', error)))()
+    ;(async () =>
+      await axios
+        .get(`http://localhost:3000/users`)
+        .then(response => setUsersList(response.data))
+        .catch(error => console.error('There was error : ', error)))()
+
+    const logged = JSON.parse(localStorage.getItem('logged'))
+    setLoggedUser(logged)
   }, [])
 
   useEffect(() => {
@@ -53,6 +62,32 @@ export function ContextProvider({ children }) {
         .catch(error => console.error('There was error : ', error)))()
   }, [page])
 
+  // useEffect(() => {
+  //   console.log(loggedUser, 'loggedUser w context')
+  //   if (loggedUser) {
+  //     console.log(loggedUser, 'loggedUser')
+  //     ;(async () =>
+  //       await axios
+  //         .get(`http://localhost:3000/users`)
+  //         .then(response => setData(response))
+  //         .catch(error => console.error('There was error : ', error)))()
+  //   }
+  // }, [loggedUser])
+
+  const setData = response => {
+    setUsersList(response)
+    console.log(response)
+    const data = response.data
+    if (loggedUser) {
+      data.map(({ name, data }) => {
+        if (name === loggedUser.name) {
+          setFavouritesPokemons(data.favouritesPokemons)
+          setArenaMembers(data.arenaMembers)
+          setStatsFromJsonServer(data.stats)
+        }
+      })
+    }
+  }
   // const getArenaMembers = async () => {
   //   await axios
   //     .get('http://localhost:3000/arenaMembers')
@@ -95,6 +130,10 @@ export function ContextProvider({ children }) {
         setValue,
         setStatsFromJsonServer,
         statsFromJsonServer,
+        loggedUser,
+        setLoggedUser,
+        usersList,
+        setUsersList,
       }}
     >
       {children}
@@ -103,3 +142,16 @@ export function ContextProvider({ children }) {
 }
 
 export default Context
+// ;(async () =>
+//   await axios
+//     .get(`http://localhost:3000/${user}`)
+//     .then(response => {
+//       console.log(response)
+//       setArenaMembers(response.data.arenaMembers)
+//     })
+//     .catch(error => console.error('There was error : ', error)))()
+// ;(async () =>
+//   await axios
+//     .get(`http://localhost:3000/${user}`)
+//     .then(response => setStatsFromJsonServer(response.data.stats))
+//     .catch(error => console.error('There was error : ', error)))()

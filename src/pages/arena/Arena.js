@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
 import Context from '../../Context'
-import SimplePokemonCard from '../../components/SimplePokemonCard/SimplePokemonCard'
+import SimplePokemonCard from '../../components/simplePokemonCard/SimplePokemonCard'
 import pokeball from '../../images/pokeball.png'
-import BackHomeButton from '../../components/BackHomeButton/BackHomeButton'
+import BackHomeButton from '../../components/backHomeButton/BackHomeButton'
 import sword from '../../images/swords.png'
 import { S } from './Arena.styled'
 import axios from 'axios'
@@ -14,6 +14,7 @@ const Arena = () => {
     setArenaMembers,
     setStatsFromJsonServer,
   } = useContext(Context)
+
   const [draw, setDraw] = useState(false)
   const [numDelete, setNumDelete] = useState(0)
 

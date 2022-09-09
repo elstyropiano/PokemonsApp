@@ -1,8 +1,8 @@
-import BackHomeButton from '../../components/BackHomeButton/BackHomeButton'
+import BackHomeButton from '../../components/backHomeButton/BackHomeButton'
 import { useContext } from 'react'
 import Context from '../../Context'
-import PokemonDetails from '../../components/PokemonDetails/PokemonDetails'
-import { S } from '../../pages/Details/Details.styled'
+import PokemonDetails from '../../components/pokemonDetails/PokemonDetails'
+import { S } from './Details.styled'
 
 const Details = () => {
   const { link } = useContext(Context)

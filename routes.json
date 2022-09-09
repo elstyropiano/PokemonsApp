@@ -1,0 +1,3 @@
+{
+  "/users/:id/:category": "/users/:id?category=:category"
+}

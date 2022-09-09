@@ -4,7 +4,7 @@ import Context from '../../Context'
 const BasicPagination = () => {
   const { setPage, page } = useContext(Context)
   const handlePagination = (e, value) => setPage(value)
-  console.log(page, 'page')
+
   return (
     <Pagination
       count={10}

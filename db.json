@@ -1,52 +1,93 @@
 {
-  "stats": [
+  "users": [
     {
-      "name": "venusaur",
-      "experience": 293,
-      "wins": 3,
-      "loses": 0,
+      "name": "grzegorz",
+      "email": "grzegorz@email.com",
+      "password": "(9nKasdasdasd",
       "id": 1
     },
     {
-      "name": "ivysaur",
-      "experience": 142,
-      "wins": 0,
-      "loses": 1,
+      "name": "asdasdasd",
+      "email": "asdasca@o2.pl",
+      "password": "(9nKasdasdasd",
       "id": 2
-    },
+    }
+  ],
+  "stats": [
     {
-      "name": "charmander",
-      "experience": 72,
-      "wins": 1,
+      "name": "ivysaur",
+      "experience": 182,
+      "wins": 4,
       "loses": 0,
-      "id": 3
+      "id": 1
     },
     {
       "name": "bulbasaur",
       "experience": 64,
       "wins": 0,
-      "loses": 1,
+      "loses": 4,
+      "id": 2
+    },
+    {
+      "name": "venusaur",
+      "experience": 273,
+      "wins": 1,
+      "loses": 0,
+      "id": 3
+    },
+    {
+      "name": "charmander",
+      "experience": 62,
+      "wins": 0,
+      "loses": 2,
       "id": 4
     },
     {
-      "name": "charmeleon",
-      "experience": 142,
-      "wins": 0,
-      "loses": 1,
+      "name": "charizard",
+      "experience": 277,
+      "wins": 1,
+      "loses": 0,
       "id": 5
     }
   ],
   "favouritesPokemons": [
     {
-      "name": "ivysaur",
-      "url": "https://pokeapi.co/api/v2/pokemon/2/",
+      "name": "venusaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/3/",
       "id": 1
     },
     {
-      "name": "charizard",
-      "url": "https://pokeapi.co/api/v2/pokemon/6/",
+      "name": "ivysaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/2/",
       "id": 2
+    },
+    {
+      "name": "charmeleon",
+      "url": "https://pokeapi.co/api/v2/pokemon/5/",
+      "id": 3
+    },
+    {
+      "name": "bulbasaur",
+      "url": "https://pokeapi.co/api/v2/pokemon/1/",
+      "id": 4
+    },
+    {
+      "name": "koffing",
+      "url": "https://pokeapi.co/api/v2/pokemon/109/",
+      "id": 5
     }
   ],
-  "arenaMembers": []
+  "arenaMembers": [
+    {
+      "name": "bulbasaur",
+      "experience": 64,
+      "height": 7,
+      "weight": 69,
+      "speed": 45,
+      "wins": 0,
+      "loses": 0,
+      "url": "https://pokeapi.co/api/v2/pokemon/1/",
+      "id": 1
+    }
+  ]
 }

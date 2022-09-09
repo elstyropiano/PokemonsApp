@@ -1,4 +1,4 @@
-import SimplePokemonCard from '../SimplePokemonCard/SimplePokemonCard'
+import SimplePokemonCard from '../simplePokemonCard/SimplePokemonCard'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import Context from '../../Context'

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 import axios from 'axios'
 import Context from '../../Context'
-import Description from '../Description/Description'
+import Description from '../description/Description'
 import CircularProgress from '@mui/material/CircularProgress'
 import { S } from './PokemonDetails.styled'
 
@@ -13,7 +13,6 @@ const PokemonDetails = ({ url }) => {
   const [fullArenaWarning, setFullArenaWarning] = useState(false)
   const [pokemonIsInFavourite, setPokemonIsInFavourite] = useState(null)
   const [pokemonIsInArena, setPokemonIsInArena] = useState(null)
-
   const [dataToArena, setDataToArena] = useState(null)
   const [dataToFavourites, setDataToFavourites] = useState(null)
   const [idFavouritesFromJsonServer, setIdFavouritesFromJsonServer] =
@@ -28,6 +27,8 @@ const PokemonDetails = ({ url }) => {
     showDeleteSuccesOnConsole,
     showErrorMessageOnConsole,
     statsFromJsonServer,
+    loggedUser,
+    setLoggedUser,
   } = useContext(Context)
 
   const checkPokemonIsInArr = array => array?.some(({ name }) => name === id)
